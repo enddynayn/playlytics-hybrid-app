@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+
+.select-song {
+  background-color: lightgrey;
+}
+
+.add-playlist {
+  background-color: #57A2B0;
+  color: white;
+}
+
+.search input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.search label.playlist-select {
+  min-width: 196px;
+  margin-right: 10px;
+}
+
+.search .item img {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.search .item .icon .heart {
+  font-size: 20px;
+}
+
+.search .item .icon.add {
+  font-size: 27px;
+}
+
+.playlists .tags {
+  border: 2px solid blue;
+  font-size: 14px;
+  padding: 3px;
+  padding-right: 10px;
+}

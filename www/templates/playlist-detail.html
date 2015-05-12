@@ -1,0 +1,27 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{playlist.name}}">
+  <ion-content>
+  <ion-list show-reorder="shouldShowReorder" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+
+    <ion-toggle ng-model="shouldShowReorder" ng-show="playlist.songs.length > 1">
+      Re-Order?
+    </ion-toggle>
+
+    <ion-item class="item-thumbnail-left" ng-repeat="track in playlist.songs">
+      <img ng-src="{{track.album.images[0].url}}">
+      <h2>Track: {{track.name}}</h2>
+            <p>Artist: {{track.artists[0].name}}</p>
+            <p>Album: {{track.album.name}}</h2>
+            <p>Duration: {{track.duration_ms | date:'mm:ss'}}</p>
+            <p>Populatiry: {{track.popularity}}</p>
+      <ion-option-button class="button-info ion-android-remove-circle" ng-click="deleteTrack($index)">
+      <ion-reorder-button class="ion-navicon ion-drag" on-reorder="reorderItem(track, $fromIndex, $toIndex)">
+      </ion-reorder-button>
+    </ion-item>
+  </ion-content>
+</ion-view>

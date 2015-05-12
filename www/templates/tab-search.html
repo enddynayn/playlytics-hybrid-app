@@ -1,0 +1,84 @@
+<ion-view view-title="Search">
+  <ion-content class="padding search">
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="querySearch" ng-change="searchTrack(querySearch)" list="songs">
+    </div>
+    <div class="list">
+      <datalist  id="songs" >
+      <label class="item item-input">
+        <option ng-repeat="track in tracks | limitTo:4" value="{{track.name}}">
+      </datalist>
+      </label>
+      </label>
+    </div>
+    <div class="list">
+      <div class="item item-divider" ng-show="tracks.length > 0">
+      Add song to your playlist
+      </div>
+      <div ng-repeat="track in tracks">
+
+        <div class="item item-thumbnail-left item-icon-right" href="#">
+          <img ng-src="{{track.album.images[0].url}}">
+          <h3>{{track.name}}</h3>
+          <p>Artist: {{track.artists[0].name}}</p>
+          <p>Album: {{track.album.name}}</h2>
+          <p>Duration: {{track.duration_ms}}</p>
+          <p><span class="ion-android-favorite-outline heart">{{track.popularity}}</span></p>
+
+          <a ng-click="openPlaylistsModal(track)">
+            <i class="icon ion-ios-plus-outline add"></i>
+          </a>
+        </div>
+
+        <!-- <div class="item add-playlist" ng-hide="">
+          <div class="row">
+            <label class="item item-input item-select playlist-select">
+              <div class="input-label">
+                playlist
+              </div>
+              <select ng-model="playlistSelection" ng-options="playlist.title for playlist in playlists">
+              </select>
+            </label>
+
+             <button class="button button-small button-positive" ng-click="addTrackToPlaylist($index, playlistSelection)">
+              Add Track
+            </button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <script id="playlists-modal.html" type="text/ng-template">
+      <div class="modal" >
+        <ion-header-bar class="bar-positive">
+          <h1 class="title">Add To Playlist</h1>
+            <div class="buttons" ng-click="closeModal()">
+              <button class="button button-icon icon ion-close-round"></button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+          <div class="list">
+            <label class="item" ng-click="createNewPlaylist()">
+              <div class="item-content">
+                Create new playlist
+              </div>
+            </label>
+
+            <label class="item item-radio" ng-click="addTrackToPlaylist($index)" ng-repeat="playlist in playlists">
+              <input type="radio" name="group">
+              <div class="item-content">
+                {{playlist.title}}
+              </div>
+              <i class="radio-icon ion-checkmark"></i>
+            </label>
+          </div>
+        </ion-content>
+     </div>
+    </script>
+
+
+  </ion-content>
+</ion-view>
