@@ -14,7 +14,7 @@
 
     <ion-list type="card">
       <ion-item class="item-icon-right" ng-repeat="playlist in data.playlists" type="item-text-wrap">
-        <h2>{{playlist.title}}</h2>
+        <h2 class="track-title">{{playlist.title}}</h2>
         <p>{{playlist.lastText}}</p>
         <p>duration: {{playlist.totalDuration | date:'mm:ss'}}</p>
         <p>coolness factor: {{playlist.coolnessFactor}}</p>
