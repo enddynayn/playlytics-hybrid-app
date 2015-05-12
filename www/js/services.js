@@ -35,6 +35,10 @@ angular.module('playlytics.services', [])
     }
   };
 
+  var update = function(playlists) {
+    return _playlists(playlists);
+  };
+
   var isValid = function(newPlaylist) {
     return isUniquePlaylistTitle(newPlaylist);
   };
@@ -56,7 +60,8 @@ angular.module('playlytics.services', [])
     all: all,
     remove: remove,
     get: get,
-    save: save
+    save: save,
+    update: update
   };
 })
 

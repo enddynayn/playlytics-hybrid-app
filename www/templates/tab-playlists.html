@@ -19,8 +19,8 @@
         <p>duration: {{playlist.totalDuration | date:'mm:ss'}}</p>
         <p>coolness factor: {{playlist.coolnessFactor}}</p>
         <form ng-submit="addTags($index)">
-          <input type="text" ng-model="tags" placeholder="add tag">
-          <span class="tags" ng-repeat="tag in playlist.tags">{{tag}} <span class="ion-close-circled" ng-click="removeTags($index)"></span></span>
+          <input type="text" ng-model="data.tags" placeholder="add tag">
+          <span class="tags" ng-repeat="tag in playlist.tags"> {{tag}}<span class="ion-close-circled" ng-click="removeTags($index)"></span></span>
         </form>
         <a href="#/tab/playlists/{{$index}}">
           <i class="icon ion-chevron-right icon-accessory" ></i>

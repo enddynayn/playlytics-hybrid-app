@@ -50,6 +50,7 @@ angular.module('playlytics.controllers', [])
   $scope.data.playlists = PlaylistsService.all();
 
   $scope.addPlaylist = function(playlist){
+    console.log(playlist)
     if (!playlist) { return; }
 
     var newPlaylist = {
@@ -70,9 +71,15 @@ angular.module('playlytics.controllers', [])
   };
 
   $scope.addTags = function(playlistIndex) {
-    $scope.data.playlists[playlistIndex].tags.push($scope.tags)
-    // playlists = PlaylistsService.save($scope.data.playlists);
-    // $scope.data.playlists = playlists;
+    uniqueTag = ($scope.data.playlists[playlistIndex].tags.indexOf($scope.data.tags) == -1);
+    if (uniqueTag) {
+      $scope.data.playlists[playlistIndex].tags.push($scope.data.tags);
+      playlists = PlaylistsService.update($scope.data.playlists);
+      $scope.data.playlists = PlaylistsService.all();
+      $scope.data.tags = null;
+    } else {
+      alert('duplicate tag');
+    }
   };
 
   $scope.removeTag = function(playlist) {
